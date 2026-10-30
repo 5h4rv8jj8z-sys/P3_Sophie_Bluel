@@ -1,0 +1,628 @@
+/* ==========================================
+   SOPHIE BLUEL — FEUILLE DE STYLE CORRIGÉE
+   ========================================== */
+
+/* 1. RESET CSS */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption,
+tbody, tfoot, thead, tr, th, td, article,
+aside, canvas, details, embed, figure,
+figcaption, footer, header, hgroup, menu,
+nav, output, ruby, section, summary, time,
+mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+ol, ul { list-style: none; }
+blockquote, q { quotes: none; }
+blockquote::before, blockquote::after,
+q::before, q::after { content: none; }
+table { border-collapse: collapse; border-spacing: 0; }
+
+/* 2. BASE DU SITE */
+html { scroll-behavior: smooth; }
+body {
+    width: calc(100% - 40px);
+    max-width: 1140px;
+    margin: 0 auto;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1;
+    color: #3d3d3d;
+    background-color: #fffef8;
+}
+/* Rendre hidden prioritaire sur les display personnalisés */
+[hidden] { display: none !important; }
+
+h1 {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #b1663c;
+}
+h1 > span {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: .1em;
+    margin-top: 5px;
+}
+h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: #1d6154;
+}
+section { margin: 50px 0; }
+
+
+/* 3. BANDEAU MODE EDITION */
+
+#edit-banner {
+    position: sticky;
+    top: 0;
+    z-index: 1100;
+
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+
+    min-height: 59px;
+    box-sizing: border-box;
+    padding: 15px 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #000;
+    color: #fff;
+
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+    text-align: center;
+}
+
+
+/* 4. EN-TÊTE ET NAVIGATION */
+header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    margin: 50px 0;
+}
+nav ul { display: flex; align-items: center; }
+nav li { padding: 0 10px; font-size: 1.2em; }
+nav li:hover { color: #b1663c; }
+header nav a { color: inherit; text-decoration: none; }
+header nav a:hover { color: #b1663c; }
+header nav a.active { font-weight: 700; }
+header nav img { max-width: 24px; height: auto; display: block; }
+
+/* 5. INTRODUCTION */
+#introduction { display: flex; align-items: center; gap: 0; }
+#introduction figure, #introduction article { flex: 1; min-width: 0; }
+#introduction img { display: block; width: 80%; margin: 0 auto; }
+#introduction h2 { margin-bottom: 1em; }
+#introduction p { margin-bottom: .5em; line-height: 1.3; }
+
+/* 6. SECTION MES PROJETS */
+#portfolio { margin-top: 90px; margin-bottom: 60px; }
+.portfolio-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 35px;
+}
+#portfolio .portfolio-header h2 { margin: 0; text-align: center; }
+#edit-button {
+    border: 0;
+    background: none;
+    color: #111;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+#edit-button:hover { color: #b1663c; }
+
+/* 7. FILTRES DE CATÉGORIES */
+.div-filter {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 35px auto;
+}
+.div-filter > * {
+    padding: 10px 20px;
+    border: 1px solid #1d6154;
+    border-radius: 25px;
+    font-family: 'Syne', sans-serif;
+    color: #1d6154;
+    cursor: pointer;
+}
+.div-filter > *:hover, .div-filter > *.active {
+    background-color: #1d6154;
+    color: #fff;
+}
+
+/* 8. GALERIE DE LA PAGE D'ACCUEIL */
+.gallery {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.gallery figure {
+    margin: 0;
+}
+
+.gallery img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1.25;
+    object-fit: cover;
+}
+
+.gallery figcaption {
+    margin-top: 7px;
+    font-size: 14px;
+    line-height: 1.3;
+}
+
+/* 9. FORMULAIRE CONTACT */
+#contact { width: 50%; margin: 50px auto; }
+#contact > * { text-align: center; }
+#contact h2 { margin-bottom: 20px; }
+#contact form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-top: 30px;
+}
+#contact label { margin: 2em 0 1em; }
+#contact input {
+    height: 50px;
+    font-size: 1.2em;
+    border: none;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .09);
+}
+#contact textarea {
+    border: none;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .09);
+}
+input[type='submit'] {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    color: #fff;
+    background-color: #1d6154;
+    margin: 2em auto;
+    width: 180px;
+    text-align: center;
+    border-radius: 60px;
+    cursor: pointer;
+}
+footer nav ul { display: flex; justify-content: flex-end; margin: 2em; }
+
+/* 10. PAGE DE CONNEXION */
+#login {
+    width: 379px;
+    max-width: 90%;
+    margin: 150px auto 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#login h2 { text-align: center; margin-bottom: 37px; }
+#login form { display: flex; flex-direction: column; width: 100%; }
+#login label { margin-bottom: 7px; font-size: 14px; }
+#login input {
+    height: 51px;
+    box-sizing: border-box;
+    padding: 0 15px;
+    margin-bottom: 30px;
+    border: none;
+    background: white;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .09);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 14px;
+}
+#login button {
+    width: 179px;
+    height: 36px;
+    margin: 7px auto 28px;
+    border: none;
+    border-radius: 60px;
+    background-color: #1d6154;
+    color: #fff;
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+#login button:hover { background-color: #14483e; }
+#login .forgot-password {
+    font-size: 14px;
+    color: #3d3d3d;
+    text-decoration: underline;
+}
+#login-error {
+    color: #d32f2f;
+    font-size: 14px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* 11. FOND ET FENÊTRE DE LA MODALE */
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, .3);
+}
+.modal-content {
+    position: relative;
+    width: 630px;
+    max-width: 100%;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding: 50px 60px;
+    border-radius: 10px;
+    background: white;
+}
+.modal-content h2 {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: #000;
+    text-align: center;
+    margin-bottom: 40px;
+}
+#close-modal, #back-modal {
+    position: absolute;
+    top: 20px;
+    border: 0;
+    background: none;
+    color: #000;
+    font-size: 28px;
+    cursor: pointer;
+}
+#close-modal { right: 25px; }
+#back-modal { left: 25px; }
+
+/* 12. MODALE : GALERIE PHOTO */
+.modal-works {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 25px 10px;
+    margin-bottom: 40px;
+}
+.modal-works figure { position: relative; min-width: 0; }
+.modal-works img {
+    display: block;
+    width: 100%;
+    height: 105px;
+    object-fit: cover;
+}
+
+/* BOUTON CORBEILLE DANS LA MODALE */
+
+.modal-works .delete-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+
+    width: 20px;
+    height: 20px;
+    padding: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #000;
+    border: none;
+    border-radius: 2px;
+
+    cursor: pointer;
+}
+
+.modal-works .delete-button svg {
+    display: block;
+    width: 13px;
+    height: 14px;
+}
+
+.modal-works .delete-button:hover {
+    background-color: #1D6154;
+}
+
+
+/* 13. PIED COMMUN AUX DEUX VUES */
+.modal-footer {
+    border-top: 1px solid #b3b3b3;
+    padding-top: 30px;
+    margin-top: 30px;
+    text-align: center;
+}
+.modal-footer button {
+    min-width: 230px;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 60px;
+    background-color: #1d6154;
+    color: #fff;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+}
+.modal-footer button:disabled {
+    background-color: #a7a7a7;
+    cursor: not-allowed;
+}
+
+/* 14. MODALE : FORMULAIRE AJOUT PHOTO */
+#add-photo-form { display: flex; flex-direction: column; }
+.upload-zone {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 169px;
+    box-sizing: border-box;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 3px;
+    background-color: #e8f1f6;
+    text-align: center;
+}
+.upload-zone label {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 50px;
+    background-color: #cbd6dc;
+    color: #306685;
+    cursor: pointer;
+}
+.upload-zone input[type='file'] { display: none; }
+.upload-zone p { margin-top: 8px; font-size: 10px; color: #444; }
+#add-photo-form > label { margin-bottom: 10px; font-size: 14px; }
+#photo-title, #photo-category {
+    width: 100%;
+    height: 51px;
+    box-sizing: border-box;
+    padding: 0 15px;
+    margin-bottom: 25px;
+    border: none;
+    border-radius: 0;
+    background: #fff;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .09);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 14px;
+}
+#modal-add .modal-footer { margin-top: 25px; }
+
+/* 15. ADAPTATION TABLETTE ET MOBILE */
+@media (max-width: 768px) {
+    header { flex-wrap: wrap; gap: 20px; }
+    nav ul { flex-wrap: wrap; }
+    #introduction { flex-direction: column; gap: 30px; }
+    #introduction figure, #introduction article { width: 100%; }
+    #introduction img { width: 100%; max-width: 500px; }
+    #portfolio { margin-top: 70px; }
+    .portfolio-header { flex-wrap: wrap; gap: 15px; }
+    .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    #contact { width: 90%; }
+    .modal-content { padding: 50px 25px 30px; }
+    .modal-works { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 480px) {
+    body { width: calc(100% - 24px); }
+    header { margin: 30px 0; }
+    nav li { padding: 6px; font-size: 1em; }
+    .gallery { grid-template-columns: 1fr; }
+    #portfolio { margin-top: 50px; }
+    .portfolio-header { margin-bottom: 25px; }
+    #contact { width: 100%; }
+    #login { margin-top: 80px; }
+    .modal { padding: 12px; }
+    .modal-content { max-height: calc(100vh - 24px); padding: 50px 18px 24px; }
+    .modal-works { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .modal-footer button { min-width: 0; width: 100%; }
+}
+
+
+/* =====================================
+   AJOUT PHOTO - APERÇU ET VALIDATION
+===================================== */
+
+/* Centrer le contenu de la zone d'ajout */
+#upload-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#upload-placeholder[hidden],
+#photo-preview[hidden] {
+    display: none;
+}
+
+/* Icône provisoire */
+.upload-icon {
+    font-size: 45px;
+    line-height: 1;
+    color: #A4B9C4;
+}
+
+/* Prévisualisation de l'image */
+#photo-preview {
+    display: block;
+    max-width: 100%;
+    height: 169px;
+    object-fit: contain;
+}
+
+/* Message d'erreur du formulaire */
+#add-photo-error {
+    color: #d32f2f;
+    font-size: 13px;
+    text-align: center;
+    margin: 5px 0;
+}
+
+#add-photo-error:empty {
+    display: none;
+}
+
+/* Bouton Valider désactivé */
+#submit-photo:disabled {
+    background-color: #A7A7A7;
+    cursor: not-allowed;
+}
+
+/* Bouton Valider actif */
+#submit-photo:not(:disabled) {
+    background-color: #1D6154;
+    cursor: pointer;
+}
+
+/* =====================================
+   AJOUT PHOTO - APERÇU ET VALIDATION
+===================================== */
+
+/* Centrer le contenu de la zone d'ajout */
+#upload-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#upload-placeholder[hidden],
+#photo-preview[hidden] {
+    display: none;
+}
+
+/* Icône provisoire */
+.upload-icon {
+    font-size: 45px;
+    line-height: 1;
+    color: #A4B9C4;
+}
+
+/* Prévisualisation de l'image */
+#photo-preview {
+    display: block;
+    max-width: 100%;
+    height: 169px;
+    object-fit: contain;
+}
+
+/* Message d'erreur du formulaire */
+#add-photo-error {
+    color: #d32f2f;
+    font-size: 13px;
+    text-align: center;
+    margin: 5px 0;
+}
+
+#add-photo-error:empty {
+    display: none;
+}
+
+/* Bouton Valider désactivé */
+#submit-photo:disabled {
+    background-color: #A7A7A7;
+    cursor: not-allowed;
+}
+
+/* Bouton Valider actif */
+#submit-photo:not(:disabled) {
+    background-color: #1D6154;
+    cursor: pointer;
+}
+
+/* =====================================
+   FILTRES DU PORTFOLIO
+===================================== */
+
+.div-filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 50px 0;
+}
+
+/* Apparence des boutons */
+.div-filter button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 100px;
+    min-height: 37px;
+    padding: 8px 18px;
+
+    border: 1px solid #1D6154;
+    border-radius: 60px;
+
+    background-color: transparent;
+    color: #1D6154;
+
+    font-family: "Syne", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* Bouton sélectionné */
+.div-filter button.active {
+    background-color: #1D6154;
+    color: white;
+}
+
+/* Survol d'un bouton */
+.div-filter button:hover {
+    background-color: #1D6154;
+    color: white;
+}
+
+/* Conserver le masquage en mode édition */
+.div-filter[hidden] {
+    display: none !important;
+}

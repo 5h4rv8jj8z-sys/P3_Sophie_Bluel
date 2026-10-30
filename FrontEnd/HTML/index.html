@@ -1,0 +1,501 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sophie Bluel - Architecte d'intérieur</title>
+
+    <meta
+        name="description"
+        content="Découvrez les projets d'architecture d'intérieur et de décoration de Sophie Bluel."
+    >
+
+    <!-- Polices Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Feuille de style -->
+    <link rel="stylesheet" href="../assets/style.css">
+
+    <!-- JavaScript du frontend -->
+    <script src="../js/app.js" defer></script>
+</head>
+
+<body>
+
+    <!-- =====================================
+         BANDEAU DU MODE ÉDITION
+    ====================================== -->
+
+    <div id="edit-banner" hidden>
+        Mode édition
+    </div>
+
+
+    <!-- =====================================
+         EN-TÊTE ET NAVIGATION
+    ====================================== -->
+
+    <header>
+
+        <h1>
+            Sophie Bluel
+            <span>Architecte d'intérieur</span>
+        </h1>
+
+        <nav aria-label="Navigation principale">
+
+            <ul>
+                <li>
+                    <a href="#portfolio">projets</a>
+                </li>
+
+                <li>
+                    <a href="#contact">contact</a>
+                </li>
+
+                <li>
+                    <a href="../login.html" id="auth-link">
+                        login
+                    </a>
+                </li>
+
+                <li>
+                    <img
+                        src="../assets/icons/instagram.png"
+                        alt="Instagram"
+                    >
+                </li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =====================================
+         CONTENU PRINCIPAL
+    ====================================== -->
+
+    <main>
+
+        <!-- =====================================
+             PRÉSENTATION
+        ====================================== -->
+
+        <section id="introduction">
+
+            <figure>
+                <img
+                    src="../assets/images/sophie-bluel.png"
+                    alt="Portrait de Sophie Bluel"
+                >
+            </figure>
+
+            <article>
+
+                <h2>Designer d'espace</h2>
+
+                <p>
+                    Je raconte votre histoire, je valorise vos idées.
+                    Je vous accompagne de la conception à la livraison
+                    finale du chantier.
+                </p>
+
+                <p>
+                    Chaque projet sera étudié en commun, de façon à
+                    mettre en valeur les volumes, les matières et les
+                    couleurs dans le respect de l'esprit des lieux
+                    et le choix adapté des matériaux.
+                    Le suivi du chantier sera assuré dans le souci
+                    du détail, le respect du planning et du budget.
+                </p>
+
+                <p>
+                    En cas de besoin, une équipe pluridisciplinaire
+                    peut être constituée : architecte DPLG,
+                    décorateur(trice).
+                </p>
+
+            </article>
+
+        </section>
+
+
+        <!-- =====================================
+             PORTFOLIO
+        ====================================== -->
+
+        <section id="portfolio">
+
+            <div class="portfolio-header">
+
+                <h2>Mes Projets</h2>
+
+                <!-- Visible uniquement en mode administrateur -->
+                <button
+                    id="edit-button"
+                    type="button"
+                    aria-label="Modifier les projets"
+                    hidden
+                >
+                    ✎ modifier
+                </button>
+
+            </div>
+
+
+            <!-- Filtres créés dynamiquement par JavaScript -->
+            <div
+                class="div-filter"
+                aria-label="Filtrer les projets par catégorie"
+            >
+            </div>
+
+
+            <!-- Galerie alimentée par l'API -->
+            <div class="gallery">
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             CONTACT
+        ====================================== -->
+
+        <section id="contact">
+
+            <h2>Contact</h2>
+
+            <p>
+                Vous avez un projet ? Discutons-en !
+            </p>
+
+            <form action="#" method="post">
+
+                <label for="name">
+                    Nom
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    autocomplete="name"
+                    required
+                >
+
+
+                <label for="email">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    autocomplete="email"
+                    required
+                >
+
+
+                <label for="message">
+                    Message
+                </label>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    cols="30"
+                    rows="10"
+                    required
+                ></textarea>
+
+
+                <input
+                    type="submit"
+                    value="Envoyer"
+                >
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================
+         PIED DE PAGE
+    ====================================== -->
+
+    <footer>
+
+        <nav aria-label="Navigation du pied de page">
+
+            <ul>
+                <li>
+                    Mentions Légales
+                </li>
+            </ul>
+
+        </nav>
+
+    </footer>
+
+
+    <!-- =====================================
+         MODALE DE GESTION DES PROJETS
+    ====================================== -->
+
+    <!--
+        La modale est masquée par défaut.
+
+        JavaScript permet :
+        - de l'ouvrir et de la fermer ;
+        - d'afficher les projets ;
+        - de supprimer un projet ;
+        - d'ajouter une nouvelle photo.
+    -->
+
+    <div
+        id="modal"
+        class="modal"
+        hidden
+    >
+
+        <div
+            class="modal-content"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Gestion des projets"
+        >
+
+
+            <!-- =====================================
+                 BOUTON FERMER
+            ====================================== -->
+
+            <button
+                id="close-modal"
+                type="button"
+                aria-label="Fermer la fenêtre"
+            >
+                &times;
+            </button>
+
+
+            <!-- =====================================
+                 VUE 1 : GALERIE PHOTO
+            ====================================== -->
+
+            <div id="modal-gallery">
+
+                <h2>Galerie photo</h2>
+
+
+                <!--
+                    Miniatures créées dynamiquement
+                    à partir de l'API /works.
+                -->
+
+                <div class="modal-works">
+                </div>
+
+
+                <!-- Message d'erreur -->
+                <p
+                    id="modal-error"
+                    role="alert"
+                ></p>
+
+
+                <!-- Bouton pour ouvrir le formulaire -->
+                <div class="modal-footer">
+
+                    <button
+                        id="add-photo"
+                        type="button"
+                    >
+                        Ajouter une photo
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================
+                 VUE 2 : AJOUT D'UNE PHOTO
+            ====================================== -->
+
+            <div id="modal-add" hidden>
+
+
+                <!-- Retour à la galerie photo -->
+                <button
+                    id="back-modal"
+                    type="button"
+                    aria-label="Retour à la galerie photo"
+                >
+                    &#8592;
+                </button>
+
+
+                <h2>Ajout photo</h2>
+
+
+                <!-- =====================================
+                     FORMULAIRE D'AJOUT
+                ====================================== -->
+
+                <form
+                    id="add-photo-form"
+                    enctype="multipart/form-data"
+                >
+
+
+                    <!-- =====================================
+                         ZONE DE TÉLÉCHARGEMENT
+                    ====================================== -->
+
+                    <div class="upload-zone">
+
+
+                        <!-- Contenu initial de la zone -->
+                        <div id="upload-placeholder">
+
+                            <div
+                                class="upload-icon"
+                                aria-hidden="true"
+                            >
+                                ▧
+                            </div>
+
+
+                            <label for="photo">
+                                + Ajouter photo
+                            </label>
+
+
+                            <p>
+                                jpg, png : 4 Mo max
+                            </p>
+
+                        </div>
+
+
+                        <!--
+                            Aperçu de la photo sélectionnée.
+
+                            JavaScript remplace le contenu
+                            initial par l'aperçu de l'image.
+                        -->
+
+                        <img
+                            id="photo-preview"
+                            alt="Aperçu de la photo sélectionnée"
+                            hidden
+                        >
+
+
+                        <!-- Sélection du fichier -->
+                        <input
+                            type="file"
+                            id="photo"
+                            name="image"
+                            accept="image/jpeg,image/png"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- =====================================
+                         TITRE DU PROJET
+                    ====================================== -->
+
+                    <label for="photo-title">
+                        Titre
+                    </label>
+
+                    <input
+                        type="text"
+                        id="photo-title"
+                        name="title"
+                        required
+                    >
+
+
+                    <!-- =====================================
+                         CATÉGORIE DU PROJET
+                    ====================================== -->
+
+                    <label for="photo-category">
+                        Catégorie
+                    </label>
+
+                    <select
+                        id="photo-category"
+                        name="category"
+                        required
+                    >
+
+                        <!--
+                            Les catégories seront récupérées
+                            depuis l'API par JavaScript.
+                        -->
+
+                        <option value="">
+                            Sélectionner une catégorie
+                        </option>
+
+                    </select>
+
+
+                    <!-- =====================================
+                         MESSAGES D'ERREUR
+                    ====================================== -->
+
+                    <p
+                        id="add-photo-error"
+                        role="alert"
+                    ></p>
+
+
+                    <!-- =====================================
+                         BOUTON DE VALIDATION
+                    ====================================== -->
+
+                    <div class="modal-footer">
+
+                        <button
+                            id="submit-photo"
+                            type="submit"
+                            disabled
+                        >
+                            Valider
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
